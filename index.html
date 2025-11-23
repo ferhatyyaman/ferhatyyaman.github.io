@@ -7,10 +7,289 @@
 	<title>Ferhat Yaman - Mobile Apps</title>
 	<meta name="description"
 		content="Portfolio of Ferhat Yaman, featuring mobile applications MindExts and Match Crixo.">
-	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
+	<style>
+		:root {
+			--bg-color: #0f172a;
+			--card-bg: rgba(30, 41, 59, 0.7);
+			--text-primary: #f8fafc;
+			--text-secondary: #94a3b8;
+			--accent-color: #38bdf8;
+			--accent-hover: #0ea5e9;
+			--gradient-start: #38bdf8;
+			--gradient-end: #818cf8;
+			--font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: var(--font-family);
+			background-color: var(--bg-color);
+			color: var(--text-primary);
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+			background-image:
+				radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+				radial-gradient(at 100% 0%, rgba(129, 140, 248, 0.15) 0px, transparent 50%);
+			background-attachment: fixed;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+			transition: all 0.3s ease;
+		}
+
+		/* Layout */
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+			position: relative;
+			z-index: 1;
+		}
+
+		/* Hero Section */
+		.hero {
+			min-height: 90vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 100px 20px;
+			position: relative;
+		}
+
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 600px;
+			height: 600px;
+			background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		.hero h1 {
+			font-size: 5rem;
+			font-weight: 800;
+			margin-bottom: 24px;
+			background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			letter-spacing: -0.03em;
+			line-height: 1.1;
+		}
+
+		.hero p {
+			font-size: 1.5rem;
+			color: var(--text-secondary);
+			max-width: 600px;
+			margin-bottom: 48px;
+			font-weight: 300;
+		}
+
+		/* Apps Grid */
+		.apps-section {
+			padding: 100px 0;
+			position: relative;
+		}
+
+		.section-title {
+			text-align: center;
+			font-size: 3rem;
+			margin-bottom: 80px;
+			font-weight: 800;
+			background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.apps-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+			gap: 40px;
+			padding: 20px;
+		}
+
+		.app-card {
+			background: var(--card-bg);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-radius: 32px;
+			padding: 48px;
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.app-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 200px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+			pointer-events: none;
+		}
+
+		.app-card:hover {
+			transform: translateY(-12px) scale(1.02);
+			box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+			border-color: rgba(56, 189, 248, 0.2);
+		}
+
+		.app-icon {
+			width: 140px;
+			height: 140px;
+			border-radius: 32px;
+			margin-bottom: 32px;
+			object-fit: cover;
+			box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+			transition: transform 0.4s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 3rem;
+			font-weight: 800;
+			color: white;
+			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.app-card:hover .app-icon {
+			transform: scale(1.05) rotate(-3deg);
+		}
+
+		.app-title {
+			font-size: 2rem;
+			font-weight: 700;
+			margin-bottom: 16px;
+			color: #fff;
+		}
+
+		.app-desc {
+			color: var(--text-secondary);
+			margin-bottom: 32px;
+			flex-grow: 1;
+			font-size: 1.1rem;
+			line-height: 1.6;
+		}
+
+		.app-links {
+			display: flex;
+			gap: 16px;
+			flex-wrap: wrap;
+			justify-content: center;
+			width: 100%;
+		}
+
+		.btn {
+			padding: 16px 32px;
+			border-radius: 16px;
+			font-weight: 600;
+			font-size: 1rem;
+			transition: all 0.3s ease;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+			color: white;
+			box-shadow: 0 8px 20px -8px rgba(56, 189, 248, 0.5);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 12px 24px -8px rgba(56, 189, 248, 0.6);
+			filter: brightness(1.1);
+		}
+
+		.btn-secondary {
+			background: rgba(255, 255, 255, 0.05);
+			color: var(--text-primary);
+			border: 1px solid rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(4px);
+		}
+
+		.btn-secondary:hover {
+			background: rgba(255, 255, 255, 0.1);
+			border-color: rgba(255, 255, 255, 0.1);
+			transform: translateY(-2px);
+		}
+
+		/* Footer */
+		.site-footer {
+			padding: 80px 0;
+			text-align: center;
+			border-top: 1px solid rgba(255, 255, 255, 0.05);
+			margin-top: 100px;
+			background: rgba(15, 23, 42, 0.5);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 40px;
+			margin-bottom: 40px;
+		}
+
+		.footer-links a {
+			color: var(--text-secondary);
+			font-weight: 500;
+			font-size: 1.1rem;
+		}
+
+		.footer-links a:hover {
+			color: var(--accent-color);
+		}
+
+		.copyright {
+			color: var(--text-secondary);
+			font-size: 0.9rem;
+			opacity: 0.6;
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.hero h1 {
+				font-size: 3rem;
+			}
+
+			.hero p {
+				font-size: 1.2rem;
+			}
+
+			.section-title {
+				font-size: 2.5rem;
+			}
+
+			.app-card {
+				padding: 32px;
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -19,7 +298,7 @@
 	<section class="hero">
 		<div class="container">
 			<h1>Ferhat Yaman</h1>
-			<p>Building digital experiences that matter. Check out my latest mobile applications.</p>
+			<p>Crafting intuitive mobile experiences. <br>Explore my latest applications.</p>
 		</div>
 	</section>
 
@@ -31,12 +310,12 @@
 			<div class="apps-grid">
 				<!-- MindExts Card -->
 				<div class="app-card">
-					<div class="app-icon"
-						style="background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; color: white;">
-						M</div>
+					<div class="app-icon" style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+						M
+					</div>
 					<h3 class="app-title">MindExts</h3>
 					<p class="app-desc">Expand your mind with our innovative extension tools. Designed to enhance
-						productivity and focus.</p>
+						productivity and focus with a seamless user experience.</p>
 					<div class="app-links">
 						<a href="https://apps.apple.com/us/app/mindexts/id6755360338" class="btn btn-primary"
 							target="_blank">Download on App Store</a>
@@ -46,12 +325,12 @@
 
 				<!-- Match Crixo Card -->
 				<div class="app-card">
-					<div class="app-icon"
-						style="background: linear-gradient(135deg, #f43f5e, #fb923c); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; color: white;">
-						C</div>
+					<div class="app-icon" style="background: linear-gradient(135deg, #f43f5e, #fb923c);">
+						C
+					</div>
 					<h3 class="app-title">Match Crixo</h3>
-					<p class="app-desc">A new take on shape matching puzzles. Challenge your brain with colorful and
-						addictive gameplay.</p>
+					<p class="app-desc">A vibrant new take on shape matching puzzles. Challenge your brain with
+						colorful, addictive gameplay and endless levels.</p>
 					<div class="app-links">
 						<span class="btn btn-secondary" style="cursor: default; opacity: 0.7;">Coming Soon</span>
 						<a href="matchcrixo/PrivacyPolicy/index.html" class="btn btn-secondary">Privacy Policy</a>
